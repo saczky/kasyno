@@ -1,0 +1,25 @@
+{% load static %}
+
+<header>
+    <div class="header-wrapper">
+        <nav class='header_nav'>
+            <a>
+                <img src="{% static 'images/logo.png' %}" alt="JustBet">
+            </a>
+            <div class="right">
+                <div class="account">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Wyloguj</a>
+                    <div>
+                        <p>Witaj <span class='username'>{{ user.username }}</span>!</p>
+                        <p>{{ user.userprofile.money }} $</p>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}">Zaloguj</a>
+                {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+

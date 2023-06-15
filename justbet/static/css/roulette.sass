@@ -1,0 +1,180 @@
+@import 'variables'
+
+* 
+    -webkit-user-select: none
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+body
+    background-color: $green
+main
+    height: 100vh
+    width: 100%
+    display: grid
+    grid-template-columns: 1fr auto
+
+.payment
+    width: $payment-width
+
+.game-wrapper 
+    width: 100%
+    height: 100%
+    background: $green
+    box-shadow: inset rgba(0,0,0,.5) 0 0 200px
+    user-select: none
+    cursor: pointer
+
+.game-wrapper:before 
+    content: ''
+    display: block
+    width: 50px
+    height: 50px
+    position: absolute
+    border-radius: 100%
+    top: calc(50% - 115px)
+    left: calc(calc(50% - calc( $payment-width / 2 )) - 50px)
+    box-shadow: black 0 5px 30px, inset black 0 10px 15px, inset rgba(0,0,0,.3) 0 0 50px
+    border: 25px solid #222
+    z-index: 10
+
+.bang
+    display: none
+    position: absolute
+    font-size: 80px
+    left: 160px
+    top: 160px
+    fill: #2b0000
+    text-anchor: middle
+    width: 1000px
+    text
+        filter: drop-shadow( 3px 3px 2px rgba(194, 68, 0, 0.7))
+
+.payment
+    padding-top: $header-height
+    background-color: $black
+    box-shadow: black 0 0 8px
+    color: $white
+    form
+        padding: 32px
+        height: 100%
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: auto 1fr 1fr 1fr
+        grid-template-areas: "info info" "multiplier winnings" ". winnings" "bet submit"
+        gap: 16px
+        input
+            width: 50%
+        button
+            margin: 30%
+.info
+    grid-area: info
+.divider
+    width: 96%
+    margin: 0 auto
+    height: 4px
+    background-color: $green
+    border-radius: 32px
+    margin: 16px
+    box-shadow: black 0 0 8px
+
+#error
+    display: none
+    font-size: 26px
+#bet-div
+    grid-area: bet
+    display: flex
+    flex-direction: column
+#submit
+    grid-area: submit
+
+@keyframes multiplier1
+    0%
+        transform: scale(0.9) rotate(346deg)
+    50%
+        transform: scale(1.1) rotate(346deg)
+    100%
+        transform: scale(0.9) rotate(346deg)
+@keyframes multiplier2
+    0%
+        transform: scale(0.9) rotate(346deg)
+    50%
+        transform: scale(1.2) rotate(346deg)
+    100%
+        transform: scale(0.9) rotate(346deg)
+@keyframes multiplier3
+    0%
+        transform: scale(0.9) rotate(346deg)
+    50%
+        transform: scale(1.3) rotate(346deg)
+    100%
+        transform: scale(0.9) rotate(346deg)
+.multiplier-div
+    h2, p
+        width: 100%
+        text-align: center
+    h2
+        font-size: 90px
+        height: auto
+        line-height: 75px
+    p
+        font-size: 30px
+        height: 10%
+    transform: rotate(346deg)
+    align-self: center
+    font: $lato
+    grid-area: multiplier
+
+.winnings-div
+    grid-area: winnings
+    p
+        font-size: 21px
+.hidden
+    display: none
+
+.game-wrapper:after 
+    content: ''
+    display: block
+    width: 50px
+    height: 250px
+    position: fixed
+    border-radius: 15px
+    top: calc(50% - 40px)
+    left: calc(calc(50% - calc( $payment-width / 2 )) - 25px)
+    background: #222
+    z-index: 5
+    box-shadow: rgba(0,0,0,.3) 0 5px 30px, #210 25px 100px 0, #210 0px 100px 0, #210 -25px 100px 0
+
+.gun-wrapper 
+    margin: 0
+    width: 200px
+    height: 200px
+    position: fixed
+    border-radius: 100%
+    top: calc(50% - 100px)
+    left: calc(calc(50% - calc( $payment-width / 2 )) - 100px)
+    background: #222
+    color: black
+    text-align: center
+    font-size: 360px
+    font-weight: 300
+    line-height: .33
+    z-index: 1
+    text-indent: -.022em
+    transition: all .2s ease-in-out
+    font-family: 'Source Code Pro', monospace
+
+.gun-wrapper:before,
+.gun-wrapper:after 
+    content: ':'
+    position: absolute
+    width: 200px
+    height: 200px
+    top: 0
+    left: 0
+    -webkit-transform: rotate(120deg)
+    transform: rotate(120deg)
+
+.gun-wrapper:after 
+    -webkit-transform: rotate(-120deg)
+    transform: rotate(-120deg)
+
